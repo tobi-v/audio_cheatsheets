@@ -22,7 +22,22 @@ I sum up some useful functionalities of cubase which I don't have in my head all
 
 \section{General Manual}\label{GeneralManual}
 
-Progress: p. 1155/1202 Assembling Operations
+Progress: 
+\begin{itemize}
+	\item General Manual: p. 1202/1202
+	\item Plug-in Reference: p. 91/243
+	\item Scores: 0
+	\item Groove Agent SE 5: 0
+	\item HALion Sonic SE 3: 0
+	\item Library Manager 1: 0
+	\item MIDI Devices: 0
+	\item Padshop 2: 0
+	\item Remote Control Devices: 0
+	\item Retrologue 2: 0
+	\item VST Transit: 0
+	\item Manual for Voxengo Curve EQ
+\end{itemize}
+
 
 \subsection{Skipped sections}
 
@@ -44,9 +59,17 @@ Progress: p. 1155/1202 Assembling Operations
 		\begin{itemize}
 			\item Set Default Track Time Type to Musical (this means they follow timing changes)
 			\item Check Part Get Track Names
+			\item Use Up/Down Navigation Commands for Selecting Tracks only
+			\item Automation follows events
 		\end{itemize}
+		\item Editors: Use Drum Editor when Drum Map is assigned
 		\item General $>$ Personalization: Author Stella, Company Kuratorium Monokromat
-		\item MIDI: Check chase events for everything except SysEx
+		\item MIDI
+		\begin{itemize}
+			\item Check chase events for everything except SysEx
+			\item Insert Reset Events after Record
+			\item Audition through MIDI Inserts/Sends
+		\end{itemize}
 		\item Record: Check Stop after Automatic  Out
 		\begin{itemize}
 			\item Audio:
@@ -55,6 +78,7 @@ Progress: p. 1155/1202 Assembling Operations
 				\item Uncheck Create Audio Images during Record
 			\end{itemize}
 		\end{itemize}
+		\item Scores $>$ Editing: Show Note Info by the Mouse
 		\item User Interface $>$ Track \& Mix Console Channel Colors: Check all boxes
 		\item VST:
 		\begin{itemize}
@@ -965,80 +989,247 @@ Seems to be nice for atmospheric stuff, so actually pads. But hard synths also s
 
 \subsection{Effects}
 
+\subsubsection{Ambisonics}
+
+\paragraph{VST AmbiConverter} Can convert stuff for 3D mixes in virtual reality and stuff
+
 \subsubsection{Delay}
 
-\paragraph{Multi Tap Delay}
+\paragraph{ModMachine} Combination of delay modulation\footnote{What is delay modulation?} and filter modulation\footnote{What is filter modulation?} and also has some distortion. It all looks like someone who's into control theory did it.
 
 \begin{itemize}
-	\item The dropdown in the top right corner gives you more options
+	\item Delay section
 	\begin{itemize}
+		\item Nudge: Speeds up the incoming audio momentarily, simulating analog tape machines
+		\item Width: Amount of delay modulation, can reach from vibrato-like to chorus-like
+	\end{itemize}
+	\item Filter section
+	\begin{itemize}
+		\item Display of signal path in Filter Position and filtertype (low-, high-, bandpass)
+		\item Frequency: In manual mode, the frequency is the cutoff. In LFO mode, it is the modulation rate
+		\item The Q-Factor is more or less responsible for the filter's resonance. In manual mode, you can set a percentage.
+	\end{itemize}
+\end{itemize}
+
+\paragraph{MonoDelay} Pretty simple, with high and low filter and everything you would expect from a delay.
+Also works with side-chain. If the side-chain input exceeds the threshold, the delay repeats are silenced.
+
+\paragraph{MultiTap Delay}
+
+\begin{itemize}
+	\item The dropdown in the top right corner gives you more options in the top section
+	\begin{itemize}
+		\item Saturation determines, how much the saturation is increased with each repeat
+		\item Setting a character
 		\item Wobbling
-		\item Simulating a low quality delay by setting down the sample rate
+		\item Simulating a low quality delay by setting down the sample rate (low sample rates reduce the high frequency content)
 		\item Damping, Low cut, high cut
 	\end{itemize}
-	\item Ducker: Good for vox $\rightarrow$ adjust it such that delay only takes effect when the singer is not singing
-	\item Side chain support!
-	\item In the bottom section: Can set up multiple effects for the delay like loop effects and stuff, all via drag and drop. To give the delay another color or cool effects and so on
-	\item Setting taps (up to 8):
+	\item Main Section: Typical delay parameters and up to 8 taps
 	\begin{itemize}
 		\item By just double clicking in the window and drag and drop them (left right for time; up down for volume)
 		\item Grid size can be set easily via drop down
 		\item Tap rhythm: Activate it and then tap with the mouse where you want a tap while it plays
 		\item In the panorama section, the taps' panning can be adjusted
-		\item In the tap parameters section, their effect parameters can be adjusted (as well es in the tap effects section on the bottom) individually
+		\item In the tap parameters section, their effect parameters can be adjusted (as well as in the tap effects section on the bottom) individually
 		\item Top right knob can link the tabs, so you can move them all together
+		\item The randomizer gives you some options concerning max- and min number of taps, timing, panning and level range.
+		\item Ducker: Good for vox $\rightarrow$ adjust it such that delay only takes effect when the singer is not singing. High input $\rightarrow$ duck delay. It can also be controlled via side-chain input.
+		\begin{itemize}
+			\item FB: Suppresses feedback when ducking
+			\item DL: Erase delay line completely when ducking starts
+		\end{itemize}
+	\end{itemize}
+	\item In the bottom section: Can set up to six effects for the delay
+	\begin{itemize}
+		\item Loop effects feed the output signal back into the delay input
+		\item Tap effects are applied to each delay tap. Can even be set for single taps and the tap-specific parameters can be linked.
+		\item Post effects are not fed back.
+	\end{itemize}
+	\item Fourteen effect modules exist:
+	\begin{itemize}
+		\item Chorus (Doubles input signal with slightly detuned version), Flanger, Phaser, Vibrato (Pitch Modulation)
+		\item  Envelope Filter (e.g. for auto-wah and can be LP, HP, BP or Notch), Filter (actually filter modulation with LFO)
+		\item Bit Crusher (noisy distortion), Overdrive (tube-like)
+		\item Pitch Shifter, Frequency Shifter (can alter harmonic relations)
+		\item Delay (somewhat funny), Reverb (rather room ambience oriented)
+		\item AutoPan (modulates left/right sterio position)
+		\item Gate (welp it a gate brah)
 	\end{itemize}
 \end{itemize}
 
-\paragraph{PingPongDelay}
+\paragraph{PingPongDelay} See it rather as a creative tool. Works on stereo tracks, it does. If side-chain input exceeds the threshold, the delay repeats are silenced.
 
-See it rather as a creative tool
+\paragraph{StereoDelay} Works on stereo tracks, doesn't it? More or less two delays, one for left, one for right. If side-chain input exceeds the threshold, the delay repeats are silenced.
 
 \subsubsection{Distortion}
 
-\paragraph{Distroyer}
+\paragraph{AmpSimulator} Simulates an amp, duh.
 
-Can be used for some nice sound shaping stuff. Make voices crispier, tracks brighter, drums bouncier.
+\paragraph{BitCrusher} Lo-fi, noise, distortion. It's all there.
 
-\paragraph{Quadrafuzz}
+\paragraph{DaTube} Warm lush tube ampillifylyer yür. Overdrive possible, Distortion rather not.
 
-Kind of a multiband distortion with delay. Could be cool for sound-shaping.
+\paragraph{Distortion} Usually sounds rather clinical. Activate the oversampling to avoid artifacts when using high distortion.
 
-\paragraph{SoftClipper}
+\paragraph{Distroyer} Can be used for some nice sound shaping stuff. Make voices crispier, tracks brighter, drums bouncier. Can do stuff forom smooth overdrive to extreme clipping. The frequency filter is applied before distortion is added. Oversampling can reduce artifacts.
 
-Second and Third are harmonics you can add to enrich the sound. Recommended for lead vocals to add some crunch or to dirty up acoustic guitars and brass.
+\paragraph{Grungelizer} Add some noise, add some statics, add some crackle
+
+\paragraph{Magneto II} Simulates analog tape machines. The frequency range sets the spectrum band to which the tape effect is appllied. Solo lets you hear \textit{only} the frequency range. HF-Adjust sets the amount of high frequency content in the saturated signal.
+
+\paragraph{Quadrafuzz v2} Kind of a multiband distortion with delay. Could be cool for sound-shaping. Originally intended for drums, but also not bad on vox. Has 5 distortion models (Tape, Tube, Dist, Amp and Dec) and can distort up to 4 adjustable frequency bands in parallel. The delay has a ducker, which probably also can take sidechain input (but I'm not sure 'bout this). Activating the mode button loops the distorted signal back into the plug in, so distortion sums up with each delay repetition.
+The SB button lets you switch between multi- and single band mode. The scene buttons are quickly accessable settings, which you can store there.
+
+\paragraph{SoftClipper} Second and Third are harmonics you can add to enrich the sound. Recommended for lead vocals to add some crunch or to dirty up acoustic guitars and brass.
+
+\paragraph{VST Amp Rack} Intented for guitars. If you hide the big menu, you can use the smart controls. The tooltips should be sufficient to understand them.
+
+\begin{itemize}
+	\item Pre/Post-Effects: Up to six effects from a small variety of typical guitar effects. Some of them can be synchronized to the track tempo (e.g. Phaser). Effects can be removed by selecting theiir name and selecting None.
+	\item Amplifiers:
+	\begin{itemize}
+		\item Plexi (Lead): transparent, classic british rock
+		\item Diamond: hard rock/metal from the 90s
+		\item Blackface: Clean american tone
+		\item Tweed: Originally a bass amp, clean and crunchy
+		\item Deluxe: Crunchy small amp with big tone
+		\item British Custom: 60s, clean or harmonic distortion
+	\end{itemize}
+	\item Cabinets: They correspond to the amps, but you can of course select different ones
+	\item Microphones: Select between condenser and dynamic. Place them somewhere around the cabinet.
+	\item Configuration: Change the order of the signal chain. You can also decide, if the signal chain should be stereo or mono. In some cases it might be reasonable to use a stereo channel for guitars.
+	\item Master: Only do fine-tuning here. The rectangle to the left tells the ideal incoming level range.
+\end{itemize}
+
+\paragraph{VST Bass Amp} Most of it is the same as the VST Amp Rack, so I will only mention the differences here.
+
+\begin{itemize}
+	\item The effects are more suited for basses, like a more versatile compressor and a limiter.
+	\item Amplifiers:
+	\begin{itemize}
+		\item ValveAmp300: 70s Rock
+		\item Greyhound: Growing
+		\item GreenT: 80s funk/rock
+		\item Paradise: 90s clear hifi
+		\item Tweed: 50s vintage, characterful and bright (should be the same as for VST Amp Rack)
+		\item iTech: Modern amp with universal sound.
+	\end{itemize}
+	\item Cabinets:
+	\begin{itemize}
+		\item 4x10: Clear and punchy, nice for Slap bass
+		\item 8x10: Double the amount of 10" speakers
+		\item 4x12: Mellow and full sound
+		\item 1x15: More low frequencioes. Nice for rock or vintage oriented styles.
+	\end{itemize}
+	\item Microphones:
+	\begin{itemize}
+		\item 57: Dynamic cardioid char
+		\item 121 Ribbon 8 char
+		\item 409: Dynamic supercardioid char
+		\item 421: Dynamic cardioid char
+		\item 545: Dynamic cardioid with minimal feedback (what ever that means)
+		\item 5: Dynamic cardioid
+		\item 30: Omnidirectional, for reference and measurement (so probably a clean and neutral frequency response)
+		\item 87: Condenser omnidirectional
+	\end{itemize}
+\end{itemize}
 
 \subsubsection{Dynamics}
 
-\paragraph{MultibandCompressor}
+\paragraph{Brickwall Limiter} Creates a latency of 1 ms, so you better turn it off while recording. It also should always be positioned \textit{before} dithering. \textit{Detect Intersample Clipping} should also always be activated.
 
-Seems pretty powerful. You can set up the frequencies, set their volumes, define the compression, put specific bands to solo to hear what is going on there.
+If the link button is deactivated, all channels are separated separately. Else, the channel with the highest level is considered.
 
-\paragraph{MultibandExpander}
+\paragraph{Compressor} It is a compressor. Lel. It's useful to know that in the analysis, \textit{RMS} means that the average power of the audio signal is considered (nice for tracks with few transients), while \textit{Peak} rather operates on - well - peak levels (nice for percussive material). The \textit{Live} Button deactivates the look-ahead function, which takes latency to zero.
 
-"Anti-Compression" to give more dynamics in severall bands. Also has a side chain at the bottom, so one band can trigger another
+\paragraph{DeEsser} Primarily for vocal recordings. You can \textit{Solo} the selected frequency band in order to find an appropriate position and width. The \textit{Diff} lets you hear the signal, that is removed from the input. The DeEsser should be positioned between pre-amp and compression. I have no idea, what the sidechain function is good for.
 
-\paragraph{VintageCompressor}
+Shift + drag makes the frequency band wider/narrower.
 
-No threshold, nice level meters. Could be good for drums when using the punch. You can mix dry/wet in the compressor, which is cool. Can also be used in the channel strip.
+\paragraph{EnvelopeShaper} For shaping attack and release phases. Looks rather boring, but might be fun with side-chain.
 
-\subsubsection{Filters}
+\paragraph{Expander} Enhances the dynamics of a track. Stuff below the threshold gets compressed, stuff above stays the same. \textit{Fall} determines the reaction time. When using side-chaining, the expansion is triggered as soon as the signal exceeds the threshold. It could be used to reduce the level of other instruments, when kick and snare are hitting.
 
-\paragraph{Tonebooster}
+\paragraph{Gate} The \textit{Range} lets you control, how far the gate shuts. Select $-\infty$ to shut completely, when the signal is below the threshold. The side-chain works the same as that of the Expander, but a frequency filter can be applied to the side signal.
 
-Boosting frequency bands and adjusting the width. Can resemble a booster pedal for guitar sounds before going into an amp simulator.
+\paragraph{Limiter} It is just a limiter.
+
+\paragraph{Maximizer} It makes stuff louder without clipping. So I guess it basically works like a compressor with an input gain.
+
+\paragraph{MIDI Gate} A gate that is triggered by MIDI notes.
+
+\paragraph{MultibandCompressor} Seems pretty powerful. You can set up the frequencies, set their volumes, define the compression, put specific bands to solo to hear what is going on there. A side-chain can be adjusted for the specific frequency bands.
+
+\paragraph{MultibandEnvelopeShaper} Now this might produce some fancy sounds.
+
+\paragraph{MultibandExpander} "Anti-Compression" to give more dynamics in several bands. Also has a side chain at the bottom, similar to the MultibandCompressor.
+
+\paragraph{Tube Compressor} Smooth warm compression. The internal side-chain lets you filter the trigger signal. \textit{Drive} controls the tube saturation, \textit{Input} determines the compression amount. The \textit{Character} keeps the bass tight by preserving the attacks in low frequencies. It also adds brilliant harmonics for higher frequencies. The meter in the middle shows the amount of applied gain reduction.
+
+\paragraph{VintageCompressor} No threshold, nice level meters. Could be good for drums when using the \textit{Punch} mode. You can mix dry/wet in the compressor, which is cool. Can also be used in the channel strip.
+
+\paragraph{VSTDynamics} Combines Gate, Compressor and Limiter. The Gate's position can be choosen at will.
+
+\subsection{EQ}
+
+\paragraph{CurveEQ} Actually manufactured by Voxengo. It has a spectral matching functionality, which can transfer the spectral shape of one recording to that of another. This might be interesting for mastering and mixing, if you have a nice example of what your track should sound like.
+
+\paragraph{DJ-EQ} Simple 3-band: Low-mid-high.
+
+\paragraph{Frequency} Eight fully parametric bands. The settings allow you to adjust the spectrum display, e.g. how fast it reacts, if you rather want bars, if you want to display left/right channel separated and so on. If you activate the \textit{Auto Listen for Filters} button on the top right, you will here only a specific frequency band, as soon as you touch one of its knobs.
+
+For each band, you can switch between left/right, stereo and mid/side mode.
+
+Choosing linear phase avoids unwanted frequency dependent phase shifts, which might happen with minimum phase, but it increases the latency (may be this info should better go to a special good-to-know-for-audio cheatsheet).
+
+\paragraph{GEQ-10/GEQ-30} Graphic EQ with 10/30 bands. Presets for sound color exist. The EQ can operate in different modes:
+
+\begin{itemize}
+	\item True Response: Serial filters with accurate frequency response
+	\item Digital Standard: Last band's resonance depends on the sample rate
+	\item Classic: Parallel filter structure, not accurate
+	\item VariableQ: Parallel filtering where resonance depends on the gain
+	\item ConstQ asym: Parallel filter, resonance is raised with gain
+	\item ConstQ sym: Parallel filter, resonance of first and last band depend on sample rate
+	\item Resonant: Serial filter, gain increase in one band lowers the gain in adjacent bands
+\end{itemize}
+
+\paragraph{StudioEQ} Parametric 4-band stereo EQ. Only low and high bands can act as (several) shelves or cuts. It is possible to display the spectrum before and after filtering.
+
+\subsubsection{Filter}
+
+\paragraph{DualFilter} Filters out specific frequencies. Setting position to negative values make it act as low-pass, positive values as high-pass.
+
+\paragraph{MorphFilter} Mixing up low-/high-/band-pass and band-reduction filter effects. You have filter A (low- or band-pass) and filter B (high-pass or band-rejection).
+
+\paragraph{PostFilter.} Filtering out unwanted frequencies. Combination of high- and low-cut and notch filter. The preview button allow you to only hear the desired band. The notch-buttons (1, 2, 4, 8) add additional notches to filter out harmonics.
+
+\paragraph{StepFilter.} Pattern-controlled multi-mode filter. It works in 16 steps and has a cutoff and a resonance component. The vertical axis represents the frequency. You can save up to 8 patterns (small knobs on the top left) for quick access. The hard clip parameter (only available in modern mode) adds more high frequency harmonics and distortion.
+
+The StepFilter can be triggered via MIDI(-device). C0 increases the step-number successively. C1 to D\#2 trigger the steps directly.
+
+\paragraph{ToneBooster.}
+
+Boosting frequency bands and adjusting the width. Can resemble a booster pedal for guitar sounds before going into an amp simulator. Recommended use:  Before AmpSimulator.
+
+\paragraph{WahWah.} Yes, this can be controlled via side-chain (volume controls the pedal position). Low and High specify the min and max pedal positions.
 
 \subsubsection{Mastering}
 
-\paragraph{UV22HR}\hypertarget{UV-22HR}{}
-
-Adds dithering. Important when mixing towards lower quality.
-
-\subsubsection{External Effects} You need to set up the respective FX busses (sends and returns) in the Audio Connections (F4).
+\paragraph{UV22HR.}\hypertarget{UV-22HR}{} Adds dithering. Important when mixing towards lower quality. \textit{Hi} applies normal dithering, \textit{Lo} applies low dithering. \textit{Auto Black} gates dithering during silent passages. Should always be applied post-fader.
 
 \subsubsection{Modulation}
 
-\paragraph{Phaser}
+\paragraph{AutoPan.} Modulates the stereo position. You can also \textit{Link} both channels and create a chopping-like effect. The RND1 button gives you a random curve. The RND2 button creates a new random curve after each period. The \textit{Factor} is multiplicatively applied to the sync rate and allows you to create super slow panorama movements.
+
+\paragraph{Chopper.} Creates a kind of tremolo (\item Mono), that can also have a panning effect if you deactivate \textit{Mono}. It then phase shifts both channels.
+
+\paragraph{Chorus.}
+
+\paragraph{Metalizer.} Feedback knob makes metallic fun.
+
+\paragraph{Phaser.}
 
 \begin{itemize}
 	\item Feedback: Defines the character
@@ -1046,6 +1237,9 @@ Adds dithering. Important when mixing towards lower quality.
 	\item Spatial: How much it moves between left and right
 	\item LFO: Gives an automatic sweep between the existing frequencies
 \end{itemize}
+
+\paragraph{Rotary} Simulates a rotating speaker. The rotation speed can be controlled with external midi controllers. You can intensity by toggling between slow and fast, when you set different slow and fast speeds and a nice acceleration. There are two speakers simulated, one for horn and one for bass.
+Great for creating authentic hammond impressions on organs, but also nice for gits.
 
 \paragraph{Studio Chorus} Has two stages. Can help simulating vintage pianos. Also nice for lead- and backing-vocals.
 
@@ -1062,6 +1256,10 @@ Adds dithering. Important when mixing towards lower quality.
 \paragraph{MonoToStereo} Well, it does what it says. It needs to be used on a stereo track. Seems to work nice on guitars, but sounds rather shitty on clean vox. But maybe suitable for backing vox.
 
 But what about mono compatibility?
+
+\paragraph{Stereo Enhancer} The color button adds warmth on the left and brightness on the right. With a delay, it can kind of sound like a very broad reverb. Usually used as a mastering plugin.
+
+\subsubsection{External Effects} You need to set up the respective FX busses (sends and returns) in the Audio Connections (F4).
 
 \subsection{MIDI Effects}
 
@@ -1110,9 +1308,7 @@ Useful to display slightly off MIDI-notes in the way they should look like, with
 \section{Next important points}
 
 \begin{itemize}
-	\item Scores
-	\item VariAudio (and how to tune it)
-	\item PitchCorrect (and how to tune it)
+	\item Play around with effects/instruments and discover, what can be done with them
 	\item Create some nice makros and key commands
 \end{itemize}
 
