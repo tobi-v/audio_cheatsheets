@@ -1,0 +1,1 @@
+This is a loose collection of audio related cheatsheets I use and enhance from time to time. I am working in a home studio with Cubase Pro 10.5. The cheatsheets contain information that might come in handy from time to time. Knowledge I consider as "basic" is not included.
